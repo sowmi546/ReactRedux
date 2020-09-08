@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-//import LoadingBar from 'react-redux-loading';
+import LoadingBar from 'react-redux-loading';
 import {connect} from 'react-redux';
 import {handleInitalQuestions} from './actions/questions';
-
+import Dashboard from './components/Dashboard';
 
 class App extends Component {
   componentDidMount(){
@@ -14,7 +14,7 @@ class App extends Component {
   render(){
     return(
 
-      <div><h1>Hello</h1></div>
+        <Dashboard />
 
     )
   }
