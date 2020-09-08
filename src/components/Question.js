@@ -11,30 +11,43 @@ class Question extends Component {
   //const selectedQuestions;
       const {author,optionOne, optionTwo}= question;
     const questionArray = Object.values(questions)
-  //  const unansweredQuestions = []
-  //  const answeredQuestions=[]
 
-   // const selectedQuestions = questionArray.filter(function(question){
-   //   const selected = (
-   //    question.optionOne.votes.indexOf('sarahedo') >-1 || question.optionTwo.votes.indexOf('sarahedo') >-1
-   //  );
-   //  return activeQuestions=='answered'? selected : !selected
-   // })
-  // const sortedQuestions = selectedQuestions.sort((a,b) => b.timestamp - a.timestamp);
 
      const ans = question.optionOne.votes.indexOf('sarahedo') >-1 || question.optionTwo.votes.indexOf('sarahedo') >-1 ;
-     console.log('test' +ans);
-     console.log('test' +this.props.activeQuestions);
+
     return(
 
 
       <div>
       { ans && this.props.activeQuestions=='answered' && (<div>
-          <div className='authorDetails'>{question.author} asks {question.id} </div>
-      </div>)}
+        <div className='question-info'>
+          <div className='question-header'>{user.name} asks {question.id} </div>
+          <div><img src={`/${user.avatarURL}`} alt='avatar' className='avatar'/></div>
+      </div>
+      <div className='question-body'>
+        <div className='question'>Would you rater</div>
+        <div className='question-options'>
+            <p>Option1: {question.optionOne.text}</p>
+            <p>Option2 : {question.optionTwo.text} </p>
+        </div>
+      </div>
+        </div>
+
+
+      )}
       {!ans && this.props.activeQuestions=='unanswered' && (<div>
-          <div className='authorDetails'>{question.author} asks {question.id} </div>
-      </div>)}
+          <div className='question-info'>
+          <div className='question-header'>{user.name} asks {question.id} </div>
+          <div><img src={`/${user.avatarURL}`} alt='avatar' className='avatar'/></div>
+      </div>
+      <div className='question-body'>
+        <div className='question'>Would you rater</div>
+        <div className='question-options'>
+            <p>Option1: {question.optionOne.text}</p>
+            <p>Option2 : {question.optionTwo.text} </p>
+        </div>
+      </div>
+     </div>)}
 
       </div>
 
