@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {NavLink} from 'react-router-dom';
+import {NavLink,Link} from 'react-router-dom';
 
 
 class Nav extends Component{
@@ -9,8 +9,8 @@ class Nav extends Component{
     return(
       <nav className='nav'>
         <ul>
-          <li><NavLink to='/' exact activeClassName='active'> Dashboard </NavLink> </li>
-          <li><NavLink to ='/new' exact activeClassName='active'> New Question </NavLink></li>
+          <li><NavLink exact to='/'  activeClassName='active'> Dashboard </NavLink> </li>
+          <li><NavLink  to ='/new' exact activeClassName='active'> New Question </NavLink></li>
         </ul>
 
 
@@ -24,5 +24,5 @@ function mapStateToProps(){
 
 
 }
-//export default connect(mapStateToProps)(Nav)
-export default Nav
+export default connect(mapStateToProps)(Nav)
+//

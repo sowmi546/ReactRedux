@@ -14,8 +14,9 @@ class Login extends Component{
           <h2> Login or impersonate a user </h2>
           <ul className='login-options'>
             {this.props.userIds.map((id) =>(
+
               <li key={id}>
-              <UserInfo key={id}/>
+              <UserInfo id={id}/>
               </li>
             ))}
             </ul>
