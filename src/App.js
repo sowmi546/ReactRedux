@@ -17,26 +17,31 @@ class App extends Component {
     //get the list of questions
     this.props.dispatch(handleInitialData())
   }
+  render(){
+    return(
 
-  render() {
-  return (
-     <Router>
-     <Fragment>
-      <LoadingBar />
-        <div className='container'>
-        <Nav />
-          {this.props.loading === true
-              ? null
-              : <div>
-          <Route path='/' exact component={Dashboard} />
-          <Route path='/new'  component={NewQuestion} />
-        </div>
-      }
-  </div>
-</Fragment>
-     </Router>
-  )
-}
+      <Router>
+        <Fragment>
+        <LoadingBar />
+          <div className='container'>
+           <Nav />
+            {this.props.loading ===true? null:
+            <div>
+
+              <Route path='/' exact component={Dashboard} />
+              <Route path='/new' exact component ={NewQuestion} />
+              <Route exact path = '/leaderboard' component={LeaderBoard} />
+          </div>}
+              <Dashboard />
+          </div>
+        </Fragment>
+        </Router>
+
+
+
+    )
+  }
+
 
 }
 
