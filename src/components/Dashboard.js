@@ -4,8 +4,8 @@ import Question from './Question'
 class Dashboard extends Component{
 //setting the default state to unaswered questions, but based on the button clicked handleQuestion updates the state accordingly
   state = {
-    'activeQuestions' : 'unaswered',
-    'activeTab': 'unaswered'
+    'activeQuestions' : 'unanswered',
+    'activeTab': 'unanswered'
   };
 
   //handling the question types(answered/ unanswered)
@@ -14,11 +14,12 @@ class Dashboard extends Component{
       activeQuestions: type,
       activeTab : type
 
-    }))
-  }
+    }));
+  };
   render(){
     // get the access to state in render menthod
     const {activeQuestions, activeTab} = this.state
+    console.log(this.state);
     return(
       <div>
           <h3> Would you rather </h3>
