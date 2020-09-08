@@ -23,8 +23,8 @@ class App extends Component {
 
 function mapStateToProps({login, users}){
   return{
-    loggedInUserDetails: login.loggedInUserDetails,
-    authenticatedUser : login.authenticatedUser
+    // loggedInUserDetails: login.loggedInUserDetails,
+    // authenticatedUser : login.authenticatedUser
   }
 }
 export default connect(mapStateToProps)(App);
