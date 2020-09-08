@@ -9,8 +9,7 @@ import Dashboard from './components/Dashboard';
 import NewQuestion from './components/NewQuestion';
 import LeaderBoard from './components/LeaderBoard';
 import Nav from './components/Nav';
-
-
+import Login from './components/Login';
 
 
 class App extends Component {
@@ -21,22 +20,7 @@ class App extends Component {
   render(){
     return(
 
-        <Router>
-        <Fragment>
-        <LoadingBar />
-          <div className='container'>
-           <Nav />
-            {this.props.loading ===true? null:
-            (<div>
-
-              <Route path='/' component={Dashboard} />
-              <Route path='/new' component ={NewQuestion} />
-              <Route path = '/leaderboard' component={LeaderBoard} />
-          </div>)}
-              <Dashboard />
-          </div>
-        </Fragment>
-        </Router>
+        <Login />
 
 
 
