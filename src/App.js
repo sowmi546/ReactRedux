@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {handleInitialData} from './actions/shared';
 import React,{Component, Fragment} from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import logo from './logo.svg';
 import './App.css';
@@ -10,7 +10,8 @@ import NewQuestion from './components/NewQuestion';
 import LeaderBoard from './components/LeaderBoard';
 import Nav from './components/Nav';
 import Login from './components/Login';
-
+import QuestionPage from './components/QuestionPage';
+import Vote from './components/Vote';
 
 class App extends Component {
   componentDidMount(){
@@ -25,14 +26,18 @@ class App extends Component {
         <LoadingBar />
           <div className='container'>
            <Nav />
-            {this.props.loading ===true? null:
-            <div>
+           <Switch>
+            {this.props.loading ===true? <Route component={Login} />: null }
+
 
               <Route path='/' exact component={Dashboard} />
               <Route path='/new' exact component ={NewQuestion} />
               <Route exact path = '/leaderboard' component={LeaderBoard} />
-          </div>}
-              <Dashboard />
+              <Route exact path='/question/:id' component={QuestionPage} />
+              <Route exact path='/question/:id/vote' component={Vote} />
+
+          </Switch>
+
           </div>
         </Fragment>
         </Router>

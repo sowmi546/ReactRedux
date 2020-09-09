@@ -30,7 +30,7 @@ handleSubmit = (e) =>{
   e.preventDefault()
   const {optionOneValue, optionTwoValue}= this.state;
   const {dispatch} = this.props
-  //dispatch(addNewQuestion(optionOneValue,optionTwoValue))
+  dispatch(addNewQuestion(optionOneValue,optionTwoValue))
 
   this.setState(() =>({
     optionOneValue:'',

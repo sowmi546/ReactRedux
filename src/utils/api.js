@@ -15,7 +15,11 @@ export function getInitialData () {
     questions,
   }))
 }
-
+//exporting these to be used in question.js action file
 export function saveQuestion(info){
   return _saveQuestion(info)
+}
+
+export function saveQuestionAnswer(info){
+  return _saveQuestionAnswer(info)
 }

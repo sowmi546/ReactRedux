@@ -22,8 +22,8 @@ class Dashboard extends Component{
     console.log(this.state);
     return(
       <div>
-          <h3> Would you rather </h3>
-          <div className='btn-group'>
+          <h3 className='center'> Would you rather </h3>
+          <div className='btn-group' align='center'>
 
             <button className='btn unanswered' onClick={(e) => this.handleQuestions(e, 'unanswered')}> Unaswered questions </button>
             <button className='btn answered' onClick = {(e)=>this.handleQuestions(e, 'answered')}> Answered Questions </button>

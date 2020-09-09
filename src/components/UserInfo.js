@@ -29,7 +29,7 @@ class UserInfo extends Component{
     return(
       <div className='user'>
       <div key={user.id}>
-        <img src={`/${user.avatarURL}`} alt='avatar' className='avatar'/>
+        <img src={`${user.avatarURL}`} alt='avatar' className='avatar'/>
         <h4 className='user-name'> {`${user.name}`}</h4>
         <button className='login' onClick={(e) => this.handleLogin(e,user.id)}>Login as {`${user.name}`}</button>
       </div>
