@@ -13,17 +13,17 @@ export function addQuestion (question) {
     question
   }
 }
-export function addNewQuestion(optionOneValue,optionTwoValue){
+export function addNewQuestion(optionOneText,optionTwoText){
   return(dispatch, getState) =>{
     const {authedUser} = getState()
     dispatch(showLoading())
     return saveQuestion({
-      optionOneValue,
-      optionTwoValue,
+      optionOneText,
+      optionTwoText,
       author : authedUser,
 
     })
-    .then((question) => dispatch(addQuestion(question)))
+    .then((question) => {dispatch(addQuestion(question))})
     .then(() =>dispatch(hideLoading()))
   }
 }
@@ -35,31 +35,30 @@ export function getAllQuestions(questions){
 }
 
 
-export function handleAddQuestionAnswer(id,selected){
+export function handleAddQuestionAnswer({qid, answer}){
   return(dispatch,getState) =>{
     const{authedUser} = getState();
-    console.log('snctest');
     console.log(authedUser);
-    console.log(id);
-    console.log(selected);
+
     dispatch(showLoading())
     return saveQuestionAnswer({
       authedUser,
-      id,
-      selected
+      qid,
+      answer
 
 
-    }).then((question) =>dispatch(addQuestionAnswer(authedUser,id,selected))
-      .then(() => dispatch(hideLoading()))
+    }).then((question) =>dispatch(addQuestionAnswer({authedUser,qid,answer})))
+      .then(() => dispatch(hideLoading())
     )
   }
 }
 
-export function addQuestionAnswer(id, selected, authedUser){
+export function addQuestionAnswer({authedUser,qid,answer}){
   return{
     type: ADD_QUESTION_ANSWER,
-    id,
-    selected,
-    authedUser
+    authedUser,
+    qid,
+    answer,
+
   }
 }

@@ -7,16 +7,18 @@ class NewQuestion extends Component{
 state ={
   optionOneValue:'',
   optionTwoValue:'',
-  toHome: false,
+  toHome:false
 };
 handleChange = (e,option) =>{
   const text= e.target.value
   if(option =='option1'){
+
     this.setState(() =>({
       optionOneValue : text
     }))
   }
   else{
+
     this.setState(() =>({
       optionTwoValue : text
     }))
@@ -26,10 +28,9 @@ handleChange = (e,option) =>{
 }
 
 handleSubmit = (e) =>{
-  alert('hlloo ')
   e.preventDefault()
   const {optionOneValue, optionTwoValue}= this.state;
-  const {dispatch} = this.props
+  const {dispatch} = this.props;
   dispatch(addNewQuestion(optionOneValue,optionTwoValue))
 
   this.setState(() =>({
@@ -46,9 +47,9 @@ render(){
   return(
     <div>
     <h3>Would you rather </h3>
-    <form className='new-question' onSubmit={this.handleSubmit} >
-      <input type='text' name='optionOneValue' placeholder='Enter option1 value here' value={optionOneValue} onChange={(e)=> this.handleChange(e,'option1')} />
-      <input type='text' name='optionTwoValue' placeholder='Enter option2 value here' value={optionTwoValue} onChange={(e)=> this.handleChange(e,'option2')} />
+    <form className='new-question' onSubmit={(e) =>this.handleSubmit(e)} >
+      <input type='text' name='optionOneValue' id='optionOne' placeholder='Enter option1 value here' value={optionOneValue} onChange={(e)=> this.handleChange(e,'option1')} />
+      <input type='text' name='optionTwoValue' id='optionTwo' placeholder='Enter option2 value here' value={optionTwoValue} onChange={(e)=> this.handleChange(e,'option2')} />
       <button className='btn' type='submit' disabled ={optionOneValue =='' && optionTwoValue==''}> Submit </button>
       </form>
     </div>
