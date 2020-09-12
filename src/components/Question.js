@@ -1,25 +1,22 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
-import {formatDate} from '../utils/helper'
+import { Link} from 'react-router-dom'
+//import {formatDate} from '../utils/helper'
 import { Button } from 'react-bootstrap';
 
 class Question extends Component {
 
 
   render(){
-     const {questions,question,activeQuestions,user,authedUser}= this.props;
+     const {question,user,authedUser}= this.props;
     console.log(this.props);
   //  const {id, question}= this.props;
   //const selectedQuestions;
-  if(question ==-null){
+  if(question ===null){
     return <p>This question doesn't exist</p>
   }
-      const {author,optionOne, optionTwo}= question;
-    const questionArray = Object.values(questions)
 
-
-     const ans = question.optionOne.votes.indexOf(authedUser) >-1 || question.optionTwo.votes.indexOf(authedUser) >-1 ;
+  const ans = question.optionOne.votes.indexOf(authedUser) >-1 || question.optionTwo.votes.indexOf(authedUser) >-1 ;
 
     return(
 
@@ -27,7 +24,7 @@ class Question extends Component {
       <div>
 
 
-      {ans && this.props.activeQuestions=='answered' && (<div class='card'>
+      {ans && this.props.activeQuestions==='answered' && (<div className='card'>
           <Link to={`/question/${question.id}`}>
           <img src={`${user.avatarURL}`} alt='avatar' className='avatar'/>
           <div className='question-info'>
@@ -48,7 +45,7 @@ class Question extends Component {
       </Link>
       </div>
      )}
-      {!ans && this.props.activeQuestions=='unanswered' && (<div class='card'>
+      {!ans && this.props.activeQuestions==='unanswered' && (<div className='card'>
           <Link to={`/question/${question.id}`}>
           <img src={`${user.avatarURL}`} alt='avatar' className='avatar'/>
           <div className='question-info'>

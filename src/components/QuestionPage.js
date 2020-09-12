@@ -1,11 +1,11 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
-import Question from './Question'
+
 
 
 class QuestionPage extends Component{
   render(){
-    const {id,user,question} = this.props
+    const {user,question} = this.props
     return(
       <div>
       <div className='question-info'>

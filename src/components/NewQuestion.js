@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 import {addNewQuestion} from '../actions/questions.js'
 import { Form,Button } from 'react-bootstrap';
 
-import {MDBBtn} from 'mdbreact';
+
 
 class NewQuestion extends Component{
 state ={
@@ -14,7 +14,7 @@ state ={
 };
 handleChange = (e,option) =>{
   const text= e.target.value
-  if(option =='option1'){
+  if(option ==='option1'){
 
     this.setState(() =>({
       optionOneValue : text

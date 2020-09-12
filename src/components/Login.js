@@ -2,27 +2,78 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import UserInfo from './UserInfo'
+
+import {setAuthedUser} from '../actions/authedUser';
+import {Redirect} from 'react-router-dom'
 
 class Login extends Component{
+
+  state={
+
+    userId :null,
+    toHome:false
+  }
+  handleChangedUser = (e) =>{
+
+      //const { toHome } = this.state;
+    const userId = e.target.value;
+    console.log('value is' + userId);
+    this.setState(function(previousState) {
+		  return {
+			...previousState,
+			userId:userId,
+
+		  };
+		});
+
+
+  }
+
+handleUserLogin = (e) =>{
+  const { userId,toHome } = this.state;
+
+
+		this.props.dispatch(setAuthedUser(userId));
+
+
+    this.setState(() =>({
+      toHome: true
+    }))
+
+}
+
   render() {
     const {userIds, users} = this.props
-    //const userIds = Object.keys(users)
+    const {userId, toHome}= this.state
+
+
+    if(toHome === true){
+
+        return <Redirect to='/home'/>
+      }
+
+
 
     return(
-        <div className='login-body'>
-          <h2> Login or impersonate a user </h2>
-          <ul className='login-options'>
-            {this.props.userIds.map((id) =>(
 
-              <li key={id}>
-              <UserInfo id={id}/>
-              </li>
-            ))}
-            </ul>
-            </div>
 
-    )
+            <div className='login-body'>
+              <h2> Login or impersonate a user </h2>
+              <select id='login-user' onChange = {(e) => this.handleChangedUser(e)}>
+
+                  <option value='0'> Select a user from dropdown</option>
+                  {userIds.map((user) =>{
+                    return <option key={users[user].id} value={users[user].id}> {users[user].name} </option>
+                  })
+                }
+              </select>
+              <button onClick={(e) => this.handleUserLogin(e)}>Login</button>
+
+                </div>
+
+
+
+    );
   }
 }
 

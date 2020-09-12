@@ -6,20 +6,20 @@ class Dashboard extends Component{
 //setting the default state to unaswered questions, but based on the button clicked handleQuestion updates the state accordingly
   state = {
     'activeQuestions' : 'unanswered',
-    'activeTab': 'unanswered'
+
   };
 
   //handling the question types(answered/ unanswered)
   handleQuestions = (e,type) =>{
     this.setState(() =>({
       activeQuestions: type,
-      activeTab : type
+
 
     }));
   };
   render(){
     // get the access to state in render menthod
-    const {activeQuestions, activeTab} = this.state
+    const {activeQuestions} = this.state
     console.log(this.state);
     return(
       <div>
@@ -43,7 +43,7 @@ class Dashboard extends Component{
   }
 }
 
-function mapStateToProps({questions,authedUser}){
+function mapStateToProps({questions,authedUser,authenticated}){
   return{
     questionIds: Object.keys(questions)
       .sort((a,b) => questions[b].timestamp - questions[a].timestamp)

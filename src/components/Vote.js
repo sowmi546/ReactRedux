@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux'
 import {handleAddQuestionAnswer} from '../actions/questions'
-import { Link, withRouter } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 class Vote extends Component{
 
@@ -39,21 +39,21 @@ class Vote extends Component{
 
   }
   render(){
-      const {id,question,authedUser,user} = this.props;
-      const {selected,showResults} = this.state;
+      const {id,question,user} = this.props;
+
 
       return(
-        <div className='center'>
-            <div className='question-details'>
-              <img src= {user.avatarURL} alt='Avatar' class="Avatar" />
+        <div >
+            <div >
+              <img src= {user.avatarURL} alt='Avatar' className='avatar'/>
               <span> {user.name} says </span>
               <div>
                 <form onSubmit={(e) => this.handleSubmit(e,id)}>
                   <div>
-                      <input type='radio' id='optionOne' value='optionOne' onChange={(e)=>this.handleChange(e)} /><p>{question.optionOne.text}</p>
-                      <input type='radio' id='optionTwo' value='optionTwo' onChange={(e)=>this.handleChange(e)} /><p>{question.optionTwo.text}</p>
+                    <div>  <input type='radio' id='optionOne' value='optionOne' name='questionChoice' onChange={(e)=>this.handleChange(e)} /><label>{question.optionOne.text}</label> <br/> </div>
+                      <input type='radio' id='optionTwo' value='optionTwo'  name='questionChoice' onChange={(e)=>this.handleChange(e)} /><label >{question.optionTwo.text}</label>
                   </div>
-                  <button class='btn' type='submit'>Submit </button>
+                  <button className='btn' type='submit'>Submit </button>
                 </form>
               </div>
               {this.state.showResults ?  <Link to={`/question/${question.id}/results`}>

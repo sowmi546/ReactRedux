@@ -19,7 +19,9 @@ a {
 	text-decoration: none;
 }
 
-
+.selectedOption{
+  color : red;
+}
 
 a {
   text-decoration: none;
