@@ -6,21 +6,48 @@ import {NavLink,Link} from 'react-router-dom';
 class Nav extends Component{
 
   render(){
+    const {user, authedUser} = this.props;
     return(
+
+      <div>
       <nav className='nav'>
-        <ul>
-          <li><NavLink exact to='/'  activeClassName='active'> Dashboard </NavLink> </li>
-          <li><NavLink  to ='/new' exact activeClassName='active'> New Question </NavLink></li>
-        </ul>
+        {this.props.authedUser ?(
+          <div>
+          <ul >
+            <li ><NavLink exact to='/home'  activeClassName='active'> Dashboard </NavLink> </li>
+            <li ><NavLink  to ='/new' exact activeClassName='active'> New Question </NavLink></li>
+            <li><NavLink to='/leaderboard' exact activeClassName='active'> LeaderBoard </NavLink></li>
+            <li > Welcome {this.props.authedUser} </li>
+            <li ><NavLink to='/' exact activeClassName='active'> Logout </NavLink></li>
+
+          </ul>
+          <ul>
+
+          </ul>
+          </div>
+
+        ) :(
+          <ul className='login'>
+              <li></li>
+          </ul>
+
+        )}
+
 
 
       </nav>
+      </div>
 
     )
   }
 }
 
-function mapStateToProps(){
+function mapStateToProps({users,authedUser}){
+    return {
+      users,
+      authedUser
+    }
+
 
 
 }

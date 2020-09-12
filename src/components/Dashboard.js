@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Question from './Question'
+import { Button } from 'react-bootstrap';
 class Dashboard extends Component{
 //setting the default state to unaswered questions, but based on the button clicked handleQuestion updates the state accordingly
   state = {
@@ -22,16 +23,16 @@ class Dashboard extends Component{
     console.log(this.state);
     return(
       <div>
-          <h3 className='center'> Would you rather </h3>
+          <h2 className='center'> Would you rather ...?? </h2>
           <div className='btn-group' align='center'>
 
-            <button className='btn unanswered' onClick={(e) => this.handleQuestions(e, 'unanswered')}> Unaswered questions </button>
-            <button className='btn answered' onClick = {(e)=>this.handleQuestions(e, 'answered')}> Answered Questions </button>
+            <Button className='ButtonState' onClick={(e) => this.handleQuestions(e, 'unanswered')}> Unaswered questions </Button>
+            <Button className='ButtonState' onClick = {(e)=>this.handleQuestions(e, 'answered')}> Answered Questions </Button>
           </div>
 
           <ul className='questions-display'>
             {this.props.questionIds.map((id) =>(
-              <li key={id}>
+              <li key={id}  align='center'>
                 <Question id={id} activeQuestions={activeQuestions} />
               </li>
             ))}

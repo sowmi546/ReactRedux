@@ -1,21 +1,27 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser';
-
+import {Redirect} from 'react-router-dom'
 
 class UserInfo extends Component{
   state ={
-    toHome: false
+    toHome:false
   }
   handleLogin = (e,userID) =>{
+    alert('hello2');
 
     e.preventDefault()
     const {dispatch} = this.props
     dispatch(setAuthedUser(userID))
 
     this.setState(() =>({
-      toHome: true
+      toHome:true
+
     }))
+
+
+
+    console.log('setting tohome state'+ this.state.toHome);
   }
 
 
@@ -23,7 +29,14 @@ class UserInfo extends Component{
 
 
   render(){
-    const {users, user} = this.props
+    const {users, user,authedUser} = this.props
+    const {toHome}= this.state
+    
+
+    if(toHome === true){
+      alert('hello');
+        return <Redirect to='/home'/>
+      }
 
     console.log(this.props)
     return(
@@ -31,7 +44,7 @@ class UserInfo extends Component{
       <div key={user.id}>
         <img src={`${user.avatarURL}`} alt='avatar' className='avatar'/>
         <h4 className='user-name'> {`${user.name}`}</h4>
-        <button className='login' onClick={(e) => this.handleLogin(e,user.id)}>Login as {`${user.name}`}</button>
+        <button className='login-btn' onClick={(e) => this.handleLogin(e,user.id)}>Login as {`${user.name}`}</button>
       </div>
 
       </div>
@@ -39,11 +52,12 @@ class UserInfo extends Component{
   }
 }
 
-function mapStateToProps({users},{id}){
+function mapStateToProps({users,authedUser},{id}){
   const user = users[id]
   return{
     users,
-    user
+    user,
+    authedUser
   }
 
 }

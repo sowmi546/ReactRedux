@@ -12,6 +12,7 @@ import Nav from './components/Nav';
 import Login from './components/Login';
 import QuestionPage from './components/QuestionPage';
 import Vote from './components/Vote';
+import PollResults from './components/PollResults';
 
 class App extends Component {
   componentDidMount(){
@@ -25,16 +26,17 @@ class App extends Component {
         <Fragment>
         <LoadingBar />
           <div className='container'>
-           <Nav />
+          <Nav />
            <Switch>
-            {this.props.loading ===true? <Route component={Login} />: null }
+            {this.props.loading ===true? <Route path ='/' exact component={Login} />: null }
 
 
-              <Route path='/' exact component={Dashboard} />
+              <Route path='/home' exact component={Dashboard} />
               <Route path='/new' exact component ={NewQuestion} />
               <Route exact path = '/leaderboard' component={LeaderBoard} />
               <Route exact path='/question/:id' component={QuestionPage} />
               <Route exact path='/question/:id/vote' component={Vote} />
+              <Route exact path='/question/:id/results' component={PollResults} />
 
           </Switch>
 

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import {formatDate} from '../utils/helper'
+import { Button } from 'react-bootstrap';
 
 class Question extends Component {
 
@@ -25,50 +27,47 @@ class Question extends Component {
       <div>
 
 
-      {ans && this.props.activeQuestions=='answered' && (<div>
+      {ans && this.props.activeQuestions=='answered' && (<div class='card'>
           <Link to={`/question/${question.id}`}>
+          <img src={`${user.avatarURL}`} alt='avatar' className='avatar'/>
           <div className='question-info'>
-          <div><img src={`${user.avatarURL}`} alt='avatar' className='avatar'/></div>
-          <span className='question-header'>{user.name} asks</span>
+          <div>
+          <span className='question-header'>{user.name} asks..</span>
 
+          <div className='question'>Would you rather</div>
+          <ul className='question-options'>
+              <li>1. {question.optionOne.text}</li>
+              <li>2. {question.optionTwo.text} </li>
+          </ul>
+        </div>
           </div>
 
-
-      <div className='question-info'>
-        <div className='question'>Would you rather</div>
-        <div className='question-options'>
-            <p>Option1: {question.optionOne.text}</p>
-            <p>Option2 : {question.optionTwo.text} </p>
-        </div>
-      </div>
       </Link>
       <Link to={`/question/${question.id}/results`}>
-      <div><button>View Poll </button></div>
+      <div><Button variant="primary" size='sm'>View Poll </Button></div>
       </Link>
-
-     </div>)}
-      {!ans && this.props.activeQuestions=='unanswered' && (<div>
+      </div>
+     )}
+      {!ans && this.props.activeQuestions=='unanswered' && (<div class='card'>
           <Link to={`/question/${question.id}`}>
+          <img src={`${user.avatarURL}`} alt='avatar' className='avatar'/>
           <div className='question-info'>
-          <div><img src={`${user.avatarURL}`} alt='avatar' className='avatar'/></div>
-          <span className='question-header'>{user.name} asks</span>
+          <div>
+          <span className='question-header'>{user.name} asks..</span>
 
+          <div className='question'>Would you rather</div>
+          <ul className='question-options'>
+              <li>1. {question.optionOne.text}</li>
+              <li>2. {question.optionTwo.text} </li>
+          </ul>
+        </div>
           </div>
 
-
-      <div className='question-info'>
-        <div className='question'>Would you rather</div>
-        <div className='question-options'>
-            <p>Option1: {question.optionOne.text}</p>
-            <p>Option2 : {question.optionTwo.text} </p>
-        </div>
-      </div>
       </Link>
       <Link to={`/question/${question.id}/vote`}>
-      <div><button>View Poll </button></div>
+        <div><Button variant="primary" size='sm'>View Poll </Button></div>
       </Link>
-
-     </div>)}
+      </div>)}
 
       </div>
 

@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {addNewQuestion} from '../actions/questions.js'
+import { Form,Button } from 'react-bootstrap';
+
+import {MDBBtn} from 'mdbreact';
 
 class NewQuestion extends Component{
 state ={
@@ -43,15 +46,28 @@ handleSubmit = (e) =>{
 }
 
 render(){
-  const {optionOneValue, optionTwoValue}= this.state;
+  const {optionOneValue, optionTwoValue,toHome}= this.state;
+  if(toHome === true){
+      return <Redirect to='/home' />
+    }
   return(
-    <div>
+    <div id='form'>
     <h3>Would you rather </h3>
-    <form className='new-question' onSubmit={(e) =>this.handleSubmit(e)} >
-      <input type='text' name='optionOneValue' id='optionOne' placeholder='Enter option1 value here' value={optionOneValue} onChange={(e)=> this.handleChange(e,'option1')} />
-      <input type='text' name='optionTwoValue' id='optionTwo' placeholder='Enter option2 value here' value={optionTwoValue} onChange={(e)=> this.handleChange(e,'option2')} />
-      <button className='btn' type='submit' disabled ={optionOneValue =='' && optionTwoValue==''}> Submit </button>
-      </form>
+
+
+
+    <Form onSubmit={(e) =>this.handleSubmit(e)}>
+      <Form.Group controlId='newQuestion.ControlTextArea'>
+        <Form.Label> Option 1  </Form.Label>
+        <Form.Control as ='textarea' rows='1' value={optionOneValue} onChange={(e)=> this.handleChange(e,'option1')} />
+      </Form.Group>
+      <Form.Group controlId='newQuestion.ControlTextArea'>
+        <Form.Label> Option 2  </Form.Label>
+        <Form.Control as ='textarea' rows='1' value={optionTwoValue} onChange={(e)=> this.handleChange(e,'option2')} />
+      </Form.Group>
+      <Button variant='primary' type='submit' size='sm'> Submit </Button>
+    </Form>
+
     </div>
 
   )

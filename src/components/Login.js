@@ -10,7 +10,7 @@ class Login extends Component{
     //const userIds = Object.keys(users)
 
     return(
-        <div className='login'>
+        <div className='login-body'>
           <h2> Login or impersonate a user </h2>
           <ul className='login-options'>
             {this.props.userIds.map((id) =>(
