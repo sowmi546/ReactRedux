@@ -7,7 +7,8 @@ class Nav extends Component{
 
   render(){
 
-    const {authedUser} = this.props
+    const {authedUser,user} = this.props
+   const loggedInUser = user? user.name:''
     return(
 
       <div>
@@ -18,24 +19,15 @@ class Nav extends Component{
             <li ><NavLink exact to='/home'  activeClassName='active'> Dashboard </NavLink> </li>
             <li ><NavLink  to ='/add' exact activeClassName='active'> New Question </NavLink></li>
             <li><NavLink to='/leaderboard' exact activeClassName='active'> LeaderBoard </NavLink></li>
-             {authedUser &&  <div><li > Welcome {this.props.authedUser} </li>
-             <li ><NavLink to='/logout' exact activeClassName='active'> Logout </NavLink></li> </div>
+             {authedUser &&  <div><ul aligh='right'><li > Welcome <b>{loggedInUser} </b> </li>
+             <li ><NavLink to='/logout' exact activeClassName='active'> Logout </NavLink></li></ul> </div>
            }
 
 
           </ul>
-          <ul>
 
-          </ul>
           </div>
-
-
-
-
-
-
-
-      </nav>
+        </nav>
       </div>
 
     )
@@ -45,7 +37,8 @@ class Nav extends Component{
 function mapStateToProps({users,authedUser}){
     return {
       users,
-      authedUser
+      authedUser,
+      user:users[authedUser]
     }
 
 

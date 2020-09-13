@@ -14,7 +14,7 @@ import Vote from './components/Vote';
 import PollResults from './components/PollResults';
 import Logout from './components/Logout';
 import PageNotFound from './components/PageNotFound';
-import ProtectedRoute from '.components/ProtectedRoute';
+import PrivateRoute from './components/PrivateRoute';
 
 class App extends Component {
   componentDidMount(){
@@ -22,7 +22,6 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
   render(){
-    const {loading,authenticated,authedUser, loginUser} = this.props;
 
     console.log(this.props.authenticated);
     return(
@@ -39,14 +38,14 @@ class App extends Component {
 
              <Switch>
              <Route path ='/' exact component={Login} />
-             <ProtectedRoute exact path='/home'  component={Dashboard} />
-             <ProtectedRoute exact path='/add'  component ={NewQuestion} />
-             <ProtectedRoute exact path = '/leaderboard' component={LeaderBoard} />
-             <ProtectedRoute exact path='/question/:id' component={QuestionPage} />
-             <ProtectedRoute exact path='/question/:id/vote' component={Vote} />
-             <ProtectedRoute exact path='/question/:id/results' component={PollResults} />
+             <PrivateRoute exact path='/home'  component={Dashboard} />
+             <PrivateRoute exact path='/add'  component ={NewQuestion} />
+             <PrivateRoute exact path = '/leaderboard' component={LeaderBoard} />
+             <PrivateRoute exact path='/question/:id' component={QuestionPage} />
+             <PrivateRoute exact path='/question/:id/vote' component={Vote} />
+             <PrivateRoute exact path='/question/:id/results' component={PollResults} />
              <Route exact path='/logout' component={Logout} />
-             <Route path='not-found' component={PageNotFound} />
+             <Route path='/not-found' component={PageNotFound} />
 
          </Switch>
 
@@ -66,14 +65,4 @@ class App extends Component {
 }
 
 
-function mapStateToProps({authedUser,loadingBar,logOut}){
-  return{
-
-    loading : false,
-    authenticated :logOut.authenticated,
-    loginUser : logOut.loginUser
-    //authedUser : authedUser.authedUser
-
-  }
-}
-export default connect(mapStateToProps)(App);
+export default connect()(App);

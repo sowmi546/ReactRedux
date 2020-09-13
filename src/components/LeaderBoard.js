@@ -7,14 +7,12 @@ class LeaderBoard extends Component {
 
      const {users}= this.props;
      const userIds =  Object.keys(users)
-  
+
      const totalScore = userIds.map(id =>({
        id,
        score : Object.keys(users[id].answers).length + Object.keys(users[id].questions).length,
        created:Object.keys(users[id].questions).length,
        answered:Object.keys(users[id].answers).length
-
-
 
      }))
 

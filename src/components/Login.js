@@ -30,10 +30,8 @@ class Login extends Component{
   }
 
 handleUserLogin = (e) =>{
-  const { userId,toHome } = this.state;
-
-
-		this.props.dispatch(setAuthedUser(userId));
+  const { userId } = this.state;
+   this.props.dispatch(setAuthedUser(userId));
 
 
     this.setState(() =>({
@@ -44,7 +42,7 @@ handleUserLogin = (e) =>{
 
   render() {
     const {userIds, users} = this.props
-    const {userId, toHome}= this.state
+    const { toHome}= this.state
 
 
     if(toHome === true){

@@ -21,10 +21,5 @@ class Logout extends Component{
 
 }
 
-function mapStateToProps({authedUser}){
-  return{
-    authedUser
-  }
-}
 
 export default connect()(Logout);

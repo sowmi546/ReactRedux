@@ -21,8 +21,8 @@ class PollResults extends Component {
           <div>
               <h3>Poll result for would you rather.. </h3>
               {ans1?<p>Your vote is for <b>{question.optionOne.text}</b> </p> : <p>Your vote is for <b>{question.optionTwo.text} </b></p>}
-          <p className={ans1?'selectedOption':''}>  {question.optionOne.text} is taken by {optionOneVotes} people <p class="s3-light-grey s3-round-large"><p class=" s3-blue s3-round-large" style={{width: optionOnePercentValue + '%'}}>{optionOnePercentValue}% </p></p> </p>
-            <p className={ans2?'selectedOption':''}>   {question.optionTwo.text} is taken by {optionTwoVotes} people <p class="s3-light-grey s3-round-large"><p class=" s3-blue s3-round-large" style={{width: optionTwoPercentValue + '%'}}>{optionTwoPercentValue}%</p></p></p>
+          <div className={ans1?'selectedOption':''}>  {question.optionOne.text} is taken by {optionOneVotes} people <div className="s3-light-grey s3-round-large"><div className=" s3-blue s3-round-large" style={{width: optionOnePercentValue + '%'}}>{optionOnePercentValue}% </div></div> </div>
+            <div className={ans2?'selectedOption':''}>   {question.optionTwo.text} is taken by {optionTwoVotes} people <div className="s3-light-grey s3-round-large"><div className=" s3-blue s3-round-large" style={{width: optionTwoPercentValue + '%'}}>{optionTwoPercentValue}%</div></div></div>
 
        </div>
 

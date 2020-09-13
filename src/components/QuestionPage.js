@@ -1,11 +1,15 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
-
+import {Redirect} from 'react-router-dom'
 
 
 class QuestionPage extends Component{
   render(){
+
     const {user,question} = this.props
+    if(!question){
+      return <Redirect to ='/not-found' />
+    }
     return(
       <div>
       <div className='question-info'>
