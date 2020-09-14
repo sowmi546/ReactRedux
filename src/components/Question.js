@@ -37,12 +37,11 @@ class Question extends Component {
               <li>2. {question.optionTwo.text} </li>
           </ul>
         </div>
+        <div><Button variant="primary" size='sm'>View Poll </Button></div>
           </div>
 
       </Link>
-      <Link to={`/question/${question.id}/results`}>
-      <div><Button variant="primary" size='sm'>View Poll </Button></div>
-      </Link>
+
       </div>
      )}
       {!ans && this.props.activeQuestions==='unanswered' && (<div className='card'>
@@ -58,12 +57,11 @@ class Question extends Component {
               <li>2. {question.optionTwo.text} </li>
           </ul>
         </div>
+        <div><Button variant="primary" size='sm'>View Poll </Button></div>
           </div>
 
       </Link>
-      <Link to={`/question/${question.id}/vote`}>
-        <div><Button variant="primary" size='sm'>View Poll </Button></div>
-      </Link>
+
       </div>)}
 
       </div>

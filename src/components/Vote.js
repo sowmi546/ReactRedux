@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux'
 import {handleAddQuestionAnswer} from '../actions/questions'
 import { Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 class Vote extends Component{
 
@@ -39,9 +40,13 @@ class Vote extends Component{
 
   }
   render(){
-      const {id,question,user} = this.props;
+      const {id,questions,users} = this.props;
 
-
+      const question = questions[id];
+      const user = users[question.author];
+      if(!question){
+        return <Redirect to ='/not-found' />
+      }
       return(
         <div >
             <div >
@@ -56,9 +61,9 @@ class Vote extends Component{
                   <button className='btn' type='submit'>Submit </button>
                 </form>
               </div>
-              {this.state.showResults ?  <Link to={`/question/${question.id}/results`}>
-                <div><h3>Response Submitted ! Do you want to view poll?</h3><button>View Poll </button></div>
-                </Link> :null}
+              {this.state.showResults &&
+                <div><h3>Response Submitted !</h3></div>
+              }
 
 
             </div>
@@ -72,14 +77,15 @@ class Vote extends Component{
 
 
 function mapStateToProps({users, questions,authedUser},props){
-  const {id} = props.match.params;
-  const question = questions[id];
-  const user = users[question.author]
+//  const {id} = props.match.params;
+//  const question = questions[id];
+  //const user = users[question.author]
   return{
-    id,
-    question,
+  //  id,
+  //  question,
     authedUser,
-    user
+    users,
+    questions
 
   }
 
